@@ -11,8 +11,8 @@ describe("GET /api/movies", () => {
 
 });
 
-describe("GET /api/movies/1", () => {
-  it("should return movie id=1", async () => {
+describe("GET /api/movies/:id", () => {
+  it("should return a movie", async () => {
     const response = await request(app).get("/api/movies/1");
     expect(response.headers["content-type"]).toMatch(/json/);
     expect(response.status).toEqual(200);
@@ -20,8 +20,8 @@ describe("GET /api/movies/1", () => {
 
 });
 
-describe("GET /api/movies/0", () => {
-  it("should return movie id=0", async () => {
+describe("GET /api/movies/:0", () => {
+  it("should return error 404", async () => {
     const response = await request(app).get("/api/movies/0");
     expect(response.status).toEqual(404);
   });
